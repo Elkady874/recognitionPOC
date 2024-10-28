@@ -1,0 +1,22 @@
+
+#btns{
+    display: flex;
+    position: absolute;
+    right: 0;
+    flex-direction: column;
+}
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+
+
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+  
+    z-index: 1;
+  }

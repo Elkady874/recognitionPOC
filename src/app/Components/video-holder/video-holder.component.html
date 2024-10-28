@@ -1,0 +1,12 @@
+<canvas #canvasElement></canvas>
+<video #videoElement  loop     >
+<source src="WIN_20241024_10_21_06_Pro.mp4" >
+</video>
+
+<div id="btns">
+    
+<input type="button" value="start" (click)="detectAndTrack()">
+<input type="button" value="cancel" (click)="stopDetection()">
+<input type="file" (change)="onFileSelected($event)" />
+
+</div>
