@@ -1,6 +1,10 @@
-<canvas #canvasElement></canvas>
-<video #videoElement  loop     >
-<source src="WIN_20241024_10_21_06_Pro.mp4" >
+<div>
+    <canvas #canvasElement></canvas>
+<video #videoElement 
+(loadedmetadata)="setupVideoProcessing()"
+
+ loop     >
+<source src="032fde70.mp4" >
 </video>
 
 <div id="btns">
@@ -10,3 +14,42 @@
 <input type="file" (change)="onFileSelected($event)" />
 
 </div>
+</div>
+
+
+
+
+ 
+<div class="player-stats mt-4">
+    <h3 class="text-xl font-bold mb-2">Tracked Players: {{ trackedPlayers.length }}</h3>
+    <table class="w-full border">
+      <thead>
+        <tr>
+          <th class="border p-2">Player ID</th>
+          <th class="border p-2">Position</th>
+          <th class="border p-2">Confidence</th>
+          <th class="border p-2">Trajectory Length</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(  player of trackedPlayers ; track player.id){
+            <tr   class="text-center">
+                <td class="border p-2">{{ player.id }}</td>
+                <td class="border p-2">
+                  ({{ player.bbox.x.toFixed(0) }}, 
+                  {{ player.bbox.y.toFixed(0) }})
+                </td>
+                <td class="border p-2">
+                  {{ (player.confidence * 100).toFixed(2) }}%
+                </td>
+                <td class="border p-2">
+                  {{ player.trajectory.length }} frames
+                </td>
+              </tr>
+            
+        }
+    
+      </tbody>
+    </table>
+  </div>
+  
